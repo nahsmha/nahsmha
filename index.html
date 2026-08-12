@@ -40,7 +40,7 @@ footer{text-align:center;color:#777;padding:25px;border-top:1px solid #222}
 <main>
 <section class="card" id="compare">
 <h2>⚡ قارن سيارتين</h2>
-<p class="small">هذه نسخة أولية. البيانات الحالية تجريبية وسنوسع قاعدة السيارات لاحقًا.</p>
+<p class="small">اختر سيارتين من القائمة الشاملة للبدء في المقارنة.</p>
 <div class="grid">
 <div><label>السيارة الأولى</label><select id="a"></select></div>
 <div><label>السيارة الثانية</label><select id="b"></select></div>
@@ -61,44 +61,3 @@ footer{text-align:center;color:#777;padding:25px;border-top:1px solid #222}
 </select></div>
 </div>
 <button class="full" onclick="recommend()">وش الأنسب لي؟</button>
-<div id="recommend"></div>
-</section>
-
-<section class="features">
-<div class="feature"><b>⚖️ مقارنة واضحة</b><p>نرتب أهم المواصفات جنب بعض بدل ما تتوه بين صفحات كثيرة.</p></div>
-<div class="feature"><b>🏆 نحسم الفئات</b><p>نعطي نقطة للفائز في كل معيار لتشوف الصورة بسرعة.</p></div>
-<div class="feature"><b>🎯 اختيار شخصي</b><p>الهدف النهائي: ترشيح السيارة الأقرب لاستخدامك وميزانيتك.</p></div>
-</section>
-</main>
-<footer>© 2026 نحسمها — مشروع تجريبي قابل للتطوير</footer>
-
-<script>
-const cars={
-"تويوتا كامري 2026":{price:105000,power:203,fuel:16.5,boot:428,safety:9,tech:8,reliability:10},
-"هوندا أكورد 2026":{price:110000,power:192,fuel:17,boot:473,safety:9,tech:9,reliability:9},
-"تويوتا كورولا 2026":{price:78000,power:169,fuel:18.2,boot:371,safety:9,tech:8,reliability:10},
-"كيا K5 2026":{price:98000,power:190,fuel:16.8,boot:453,safety:9,tech:9,reliability:8},
-"هيونداي سوناتا 2026":{price:99000,power:191,fuel:16.5,boot:510,safety:9,tech:9,reliability:8}
-};
-const names=Object.keys(cars),a=document.getElementById("a"),b=document.getElementById("b");
-names.forEach((n,i)=>{a.add(new Option(n,n,i===0));b.add(new Option(n,n,i===1));});
-function compare(){
-const x=cars[a.value],y=cars[b.value], rows=[
-["السعر",x.price,y.price,"low"," ريال"],["القوة",x.power,y.power,"high"," حصان"],
-["الصرفية",x.fuel,y.fuel,"high"," كم/لتر"],["الشنطة",x.boot,y.boot,"high"," لتر"],
-["الأمان",x.safety,y.safety,"high","/10"],["التقنيات",x.tech,y.tech,"high","/10"],["الاعتمادية",x.reliability,y.reliability,"high","/10"]];
-let sx=0,sy=0,h=`<h3>نتيجة المقارنة</h3><table><tr><th>المعيار</th><th>${a.value}</th><th>${b.value}</th></tr>`;
-rows.forEach(r=>{let w=r[3]=="low"?(r[1]<r[2]?1:r[1]>r[2]?2:0):(r[1]>r[2]?1:r[1]<r[2]?2:0);if(w==1)sx++;if(w==2)sy++;h+=`<tr><td>${r[0]}</td><td class="${w==1?'win':''}">${r[1]}${r[4]} ${w==1?'🏆':''}</td><td class="${w==2?'win':''}">${r[2]}${r[4]} ${w==2?'🏆':''}</td></tr>`});
-h+=`</table><div class="score">${sx} - ${sy}</div><div class="result"><b>🏆 ${sx>sy?a.value:sy>sx?b.value:"تعادل"}</b><br><span class="small">الفائز هنا مبني على البيانات التجريبية في النسخة الأولية.</span></div>`;
-document.getElementById("result").innerHTML=h;
-}
-function recommend(){
-const use=document.getElementById("use").value,x=cars[a.value],y=cars[b.value];
-const weights={daily:["fuel","reliability"],family:["boot","safety"],travel:["fuel","boot"],economy:["fuel","price","reliability"],power:["power","tech"]}[use];
-const score=c=>weights.reduce((s,k)=>s+(k==="price"?100000/c[k]:c[k]),0);
-const sx=score(x),sy=score(y),win=sx>=sy?a.value:b.value,p=Math.round(Math.max(sx,sy)/(sx+sy)*100);
-document.getElementById("recommend").innerHTML=`<div class="result"><h3>🎯 ترشيح نحسمها</h3><p>الأقرب لاحتياجك: <b>${win}</b></p><p>نسبة التوافق التقريبية: <b>${p}%</b></p><span class="small">لاحقًا نضيف عوامل أكثر مثل الصيانة، سعر إعادة البيع، التأمين والفئة.</span></div>`;
-}
-</script>
-</body>
-</html>
