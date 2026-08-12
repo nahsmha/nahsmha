@@ -1,0 +1,32 @@
+{
+  "project": "نحسمها",
+  "catalog_models": 144,
+  "catalog_brands": 20,
+  "verified_records": 33,
+  "agreed_fields": [
+    "السعر",
+    "حجم المكينة",
+    "الأسطوانات",
+    "الأحصنة",
+    "العزم",
+    "استهلاك الوقود",
+    "القير",
+    "الدفع",
+    "نوع الوقود",
+    "الأمان",
+    "الأداء/0-100",
+    "الأبعاد",
+    "سعة خزان الوقود",
+    "السنة",
+    "الفئة",
+    "المصدر"
+  ],
+  "excluded_field": "سعة الشنطة",
+  "rule": "أي معلومة لا يمكن إثباتها بمصدر موثوق تبقى «غير متوفر» ولا يتم تخمينها.",
+  "ui": {
+    "experimental_label_removed": true,
+    "developer_credit": "من صنع المطور يحيى",
+    "edit_after_compare": true,
+    "full_specs_after_compare": true
+  }
+}
