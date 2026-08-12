@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>نحسمها | قارن سيارتك</title>
+<style>
+:root{--red:#e50914;--black:#080808;--dark:#111;--muted:#9ca3af;--card:#171717}
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#080808;color:#fff}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between;padding:0 7%;border-bottom:1px solid #252525;background:#080808;position:sticky;top:0;z-index:3}
+.logo{font-size:27px;font-weight:900}.logo span{color:var(--red)}
+nav a{color:#ddd;text-decoration:none;margin-right:24px;font-size:14px}
+.hero{padding:78px 20px 55px;text-align:center;background:radial-gradient(circle at center,#30070a 0,#120202 35%,#080808 70%)}
+.badge{display:inline-block;border:1px solid #5b171b;color:#ff5a61;border-radius:999px;padding:8px 14px;margin-bottom:18px;font-size:13px}
+h1{font-size:52px;margin:0 0 14px}.hero h1 span{color:var(--red)}.hero p{color:#c7c7c7;font-size:18px;margin:0 auto 30px;max-width:650px}
+.cta{background:var(--red);border:0;color:#fff;border-radius:12px;padding:15px 28px;font-size:17px;font-weight:bold;cursor:pointer}
+main{max-width:1050px;margin:auto;padding:28px 18px 70px}
+.card{background:var(--card);border:1px solid #292929;border-radius:20px;padding:24px;margin-bottom:20px;box-shadow:0 12px 30px #0008}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+label{display:block;font-weight:bold;margin-bottom:8px}select{width:100%;padding:14px;border-radius:12px;background:#0d0d0d;color:white;border:1px solid #383838;font-size:16px}
+button.full{width:100%;margin-top:18px;padding:14px;border:0;border-radius:12px;background:var(--red);color:white;font-size:16px;font-weight:bold;cursor:pointer}
+table{width:100%;border-collapse:collapse;margin-top:15px}th,td{padding:14px;border-bottom:1px solid #2b2b2b;text-align:center}th{color:#aaa}.win{color:#ff5159;font-weight:900}
+.result{border:1px solid #5b171b;background:#210708;padding:18px;border-radius:15px;margin-top:18px}
+.score{font-size:30px;text-align:center;font-weight:900}.small{color:#999;font-size:13px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.feature{padding:18px;background:#121212;border:1px solid #292929;border-radius:15px}.feature b{display:block;margin-bottom:7px}.feature p{margin:0;color:#aaa;font-size:14px;line-height:1.6}
+footer{text-align:center;color:#777;padding:25px;border-top:1px solid #222}
+@media(max-width:650px){nav{padding:0 18px}nav a{display:none}h1{font-size:38px}.grid,.features{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<nav><div class="logo">نحسم<span>ها</span> 🔥</div><div><a href="#compare">المقارنة</a><a href="#how">كيف نعمل؟</a></div></nav>
+
+<section class="hero">
+<div class="badge">مقارنة سيارات • قرار أوضح</div>
+<h1>محتار بين سيارتين؟<br><span>نحسمها لك.</span></h1>
+<p>قارن المواصفات، اعرف نقاط القوة والاختلاف، وخذ ترشيحًا مبنيًا على احتياجك.</p>
+<a href="#compare"><button class="cta">ابدأ المقارنة 🚘</button></a>
+</section>
+
+<main>
+<section class="card" id="compare">
+<h2>⚡ قارن سيارتين</h2>
+<p class="small">هذه نسخة أولية. البيانات الحالية تجريبية وسنوسع قاعدة السيارات لاحقًا.</p>
+<div class="grid">
+<div><label>السيارة الأولى</label><select id="a"></select></div>
+<div><label>السيارة الثانية</label><select id="b"></select></div>
+</div>
+<button class="full" onclick="compare()">احسمها 🔥</button>
+<div id="result"></div>
+</section>
+
+<section class="card" id="how">
+<h2>🎯 وش يناسبك أكثر؟</h2>
+<div class="grid">
+<div><label>استخدامك</label><select id="use">
+<option value="daily">يومي داخل المدينة</option><option value="family">عائلة ومساحة</option>
+<option value="travel">سفر وخطوط</option><option value="economy">اقتصادية</option><option value="power">أداء وقوة</option>
+</select></div>
+<div><label>ميزانيتك</label><select id="budget">
+<option>أقل من 80 ألف</option><option>80 - 120 ألف</option><option>120 - 160 ألف</option><option>أكثر من 160 ألف</option>
+</select></div>
+</div>
+<button class="full" onclick="recommend()">وش الأنسب لي؟</button>
+<div id="recommend"></div>
+</section>
+
+<section class="features">
+<div class="feature"><b>⚖️ مقارنة واضحة</b><p>نرتب أهم المواصفات جنب بعض بدل ما تتوه بين صفحات كثيرة.</p></div>
+<div class="feature"><b>🏆 نحسم الفئات</b><p>نعطي نقطة للفائز في كل معيار لتشوف الصورة بسرعة.</p></div>
+<div class="feature"><b>🎯 اختيار شخصي</b><p>الهدف النهائي: ترشيح السيارة الأقرب لاستخدامك وميزانيتك.</p></div>
+</section>
+</main>
+<footer>© 2026 نحسمها — مشروع تجريبي قابل للتطوير</footer>
+
+<script>
+const cars={
+"تويوتا كامري 2026":{price:105000,power:203,fuel:16.5,boot:428,safety:9,tech:8,reliability:10},
+"هوندا أكورد 2026":{price:110000,power:192,fuel:17,boot:473,safety:9,tech:9,reliability:9},
+"تويوتا كورولا 2026":{price:78000,power:169,fuel:18.2,boot:371,safety:9,tech:8,reliability:10},
+"كيا K5 2026":{price:98000,power:190,fuel:16.8,boot:453,safety:9,tech:9,reliability:8},
+"هيونداي سوناتا 2026":{price:99000,power:191,fuel:16.5,boot:510,safety:9,tech:9,reliability:8}
+};
+const names=Object.keys(cars),a=document.getElementById("a"),b=document.getElementById("b");
+names.forEach((n,i)=>{a.add(new Option(n,n,i===0));b.add(new Option(n,n,i===1));});
+function compare(){
+const x=cars[a.value],y=cars[b.value], rows=[
+["السعر",x.price,y.price,"low"," ريال"],["القوة",x.power,y.power,"high"," حصان"],
+["الصرفية",x.fuel,y.fuel,"high"," كم/لتر"],["الشنطة",x.boot,y.boot,"high"," لتر"],
+["الأمان",x.safety,y.safety,"high","/10"],["التقنيات",x.tech,y.tech,"high","/10"],["الاعتمادية",x.reliability,y.reliability,"high","/10"]];
+let sx=0,sy=0,h=`<h3>نتيجة المقارنة</h3><table><tr><th>المعيار</th><th>${a.value}</th><th>${b.value}</th></tr>`;
+rows.forEach(r=>{let w=r[3]=="low"?(r[1]<r[2]?1:r[1]>r[2]?2:0):(r[1]>r[2]?1:r[1]<r[2]?2:0);if(w==1)sx++;if(w==2)sy++;h+=`<tr><td>${r[0]}</td><td class="${w==1?'win':''}">${r[1]}${r[4]} ${w==1?'🏆':''}</td><td class="${w==2?'win':''}">${r[2]}${r[4]} ${w==2?'🏆':''}</td></tr>`});
+h+=`</table><div class="score">${sx} - ${sy}</div><div class="result"><b>🏆 ${sx>sy?a.value:sy>sx?b.value:"تعادل"}</b><br><span class="small">الفائز هنا مبني على البيانات التجريبية في النسخة الأولية.</span></div>`;
+document.getElementById("result").innerHTML=h;
+}
+function recommend(){
+const use=document.getElementById("use").value,x=cars[a.value],y=cars[b.value];
+const weights={daily:["fuel","reliability"],family:["boot","safety"],travel:["fuel","boot"],economy:["fuel","price","reliability"],power:["power","tech"]}[use];
+const score=c=>weights.reduce((s,k)=>s+(k==="price"?100000/c[k]:c[k]),0);
+const sx=score(x),sy=score(y),win=sx>=sy?a.value:b.value,p=Math.round(Math.max(sx,sy)/(sx+sy)*100);
+document.getElementById("recommend").innerHTML=`<div class="result"><h3>🎯 ترشيح نحسمها</h3><p>الأقرب لاحتياجك: <b>${win}</b></p><p>نسبة التوافق التقريبية: <b>${p}%</b></p><span class="small">لاحقًا نضيف عوامل أكثر مثل الصيانة، سعر إعادة البيع، التأمين والفئة.</span></div>`;
+}
+</script>
+</body>
+</html>
