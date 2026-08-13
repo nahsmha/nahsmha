@@ -1,0 +1,21 @@
+{
+  "project": "نحسمها",
+  "companies": 79,
+  "models": 579,
+  "verification_policy": "الموثق يبقى موثقًا، والتقديري يظهر كغير موثوق ويُستخدم في المقارنة مع تنبيه.",
+  "fields": [
+    "price_sar",
+    "engine",
+    "cylinders",
+    "power_hp",
+    "torque_nm",
+    "transmission",
+    "drive",
+    "fuel",
+    "economy_km_l",
+    "tank_l",
+    "dimensions_mm",
+    "acceleration_0_100",
+    "safety"
+  ]
+}
