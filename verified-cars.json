@@ -1,0 +1,44 @@
+[
+  {
+    "brand": "تويوتا",
+    "model": "كامري",
+    "year": 2026,
+    "status": "متاح",
+    "grade": "GLE HEV"
+  },
+  {
+    "brand": "فورد",
+    "model": "توروس",
+    "year": 2026,
+    "status": "متاح",
+    "grade": "Titanium"
+  },
+  {
+    "brand": "نيسان",
+    "model": "باترول",
+    "year": 2026,
+    "status": "متاح",
+    "grade": "LE Titanium"
+  },
+  {
+    "brand": "هيونداي",
+    "model": "توسان",
+    "year": 2026,
+    "status": "متاح",
+    "grade": "Hybrid Premium"
+  },
+  {
+    "brand": "لكزس",
+    "model": "RX",
+    "year": 2026,
+    "status": "متاح",
+    "grade": "500h F SPORT"
+  },
+  {
+    "brand": "بي واي دي",
+    "model": "Han",
+    "year": 2026,
+    "status": "متاح",
+    "grade": "EV Executive"
+  }
+]
